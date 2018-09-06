@@ -1,8 +1,8 @@
 function [dEnergy] = energybar(mat_file,datetext)
 
 load(mat_file)
-eng = EATNetKwh(1:1080);
-hourly_energy = max(reshape(eng-eng(1),60,18));
+eng = EATNetKwh;
+hourly_energy = max(reshape(eng-eng(1),60,24));
 dEnergy = diff(hourly_energy);
 t = round(hhminsec(1)*24)+1:round(hhminsec(1)*24)+length(dEnergy);
 bar(t,dEnergy)
